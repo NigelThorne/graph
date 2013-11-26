@@ -332,11 +332,11 @@ class Graph
   # Saves out both a dot file to path and an image for the specified type.
   # Specify type as nil to skip exporting an image.
 
-  def save path, type = nil
+  def save path, type = nil, engine='dot'
     File.open "#{path}.dot", "w" do |f|
       f.puts self.to_s
     end
-    system "dot -T#{type} #{path}.dot > #{path}.#{type}" if type
+    system "#{engine} -T#{type} #{path}.dot > #{path}.#{type}" if type
   end
 
   ##
